@@ -1,6 +1,3 @@
-<h1 align="center">
-    <img alt="Vacina Online" src=".github/" width="200px" />
-</h1>
 
 <h4 align="center">
   Projeto Vacina Online
