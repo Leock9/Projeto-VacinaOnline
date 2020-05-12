@@ -1,14 +1,12 @@
 <h1 align="center">
-    <img alt="Vacina Onliner" src=".github/" width="200px" />
+    <img alt="Vacina Online" src=".github/" width="200px" />
 </h1>
 
 <h4 align="center">
   Projeto Vacina Online
 </h4>
 
-Tecnologias
-
-Projeto desenvolvido com as seguintes tecnologias:
+## Projeto desenvolvido com as seguintes tecnologias:
 
 - [Node.js](https://nodejs.org/en/)
 - [React](https://reactjs.org)
