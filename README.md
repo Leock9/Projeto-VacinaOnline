@@ -9,6 +9,6 @@
 - [React Native](https://facebook.github.io/react-native/)
 - [Expo](https://expo.io/)
 
-## 💻 Projeto
+## Projeto
 
 O Vacina Online é um projeto com objetivo de ajudar a população a encontrar vacinas e postos disponiveis, assim como melhorar a forma com que as vacinas são divulgadas por seus respectivos postos. 
