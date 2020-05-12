@@ -1,7 +1,6 @@
-
-<h4 align="center">
-  Projeto Vacina Online
-</h4>
+<h1 align="center">
+    <img alt="Vacina Online" width="200px" />
+</h1>
 
 ## Projeto desenvolvido com as seguintes tecnologias:
 
