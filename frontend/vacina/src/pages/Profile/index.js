@@ -29,7 +29,7 @@ export default function Profile() {
                 }
             });
 
-            setVacinas(vacinas.filter(vacina => vacina.id != id));
+            setVacinas(vacinas.filter(vacina => vacina.id !== id));
 
         } catch (err) {
             alert('Erro ao deletar a vacina solicitada, tente novamente.')
