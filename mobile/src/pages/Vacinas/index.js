@@ -1,12 +1,19 @@
 import React from 'react';
 import { Feather } from '@expo/vector-icons'
 import { View, FlatList, Image, Text } from 'react-native';
+import { useNavigation } from '@react-navigation/native'
 import logo from '../../assets/logo2.png';
 import styles from './styles'
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
 
 export default function Vacinas() {
+    const navigation = useNavigation();
+
+    function navigationToDetail() {
+        navigation.navigate('Detail');
+    }
+
     return (
         <View style={styles.container}>
             <View style={styles.header}>
@@ -39,7 +46,7 @@ export default function Vacinas() {
 
                         <TouchableOpacity
                             style={styles.detailButton}
-                            onPress={() => { }}
+                            onPress={navigationToDetail}
                         >
                             <Text style={styles.detailButtonText}>Ver mais detalhes</Text>
                             <Feather name="arrow-right" size={16} color='#E02041' />
@@ -50,5 +57,3 @@ export default function Vacinas() {
         </View>
     )
 }
-
-//48
