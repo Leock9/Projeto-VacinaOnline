@@ -1,10 +1,12 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import { Feather } from '@expo/vector-icons'
 import { View, FlatList, Image, Text } from 'react-native';
-import { useNavigation } from '@react-navigation/native'
-import logo from '../../assets/logo2.png';
-import styles from './styles'
+import { useNavigation } from '@react-navigation/native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
+import { useEffect } from 'react';
+import api from '../../services/api';
+import logo from '../../assets/logo2.png';
+import styles from './styles';
 
 
 export default function Vacinas() {
@@ -57,3 +59,5 @@ export default function Vacinas() {
         </View>
     )
 }
+
+//1:10
