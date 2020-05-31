@@ -1,9 +1,8 @@
-import React, {useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import { Feather } from '@expo/vector-icons'
 import { View, FlatList, Image, Text } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
-import { useEffect } from 'react';
 import api from '../../services/api';
 import logo from '../../assets/logo2.png';
 import styles from './styles';
@@ -11,17 +10,30 @@ import styles from './styles';
 
 export default function Vacinas() {
     const navigation = useNavigation();
+    const [vacinas, setVacinas] = useState([]);
+    const [total, setTotal] = useState(0);
 
     function navigationToDetail() {
         navigation.navigate('Detail');
     }
+
+    async function loadVacinas() {
+        const response = await api.get('vacinas');
+
+        setVacinas(response.data);
+        setTotal(response.headers['Total-Vacinas']);
+    }
+
+    useEffect(() => {
+        loadVacinas();
+    })
 
     return (
         <View style={styles.container}>
             <View style={styles.header}>
                 <Image source={logo} />
                 <Text style={styles.headerText}>
-                    Total de <Text style={styles.headerTextBold}> Vacinas</Text>.
+                    Total de <Text style={styles.headerTextBold}>{total} vacinas</Text>.
                 </Text>
             </View>
 
@@ -31,20 +43,25 @@ export default function Vacinas() {
             </Text>
 
             <FlatList
-                data={[1, 2, 3, 4, 5]}
+                data={vacinas}
                 style={styles.vacinaList}
-                keyExtractor={vacina => String(vacina)}
+                keyExtractor={vacina => String(vacina.id)}
                 showsVerticalScrollIndicator={false}
-                renderItem={() => (
+                renderItem={({ item: vacina }) => (
                     <View style={styles.vacina}>
                         <Text style={styles.vacinaProperty}>Posto:</Text>
-                        <Text style={styles.vacinaValue}>Posto Teste</Text>
+                        <Text style={styles.vacinaValue}>{vacina.nome}</Text>
 
                         <Text style={styles.vacinaProperty}>Vacina Teste:</Text>
-                        <Text style={styles.vacinaValue}>Vacina Teste descricao</Text>
+                        <Text style={styles.vacinaValue}>Precia corrigir</Text>
 
                         <Text style={styles.vacinaProperty}>Valor por dose:</Text>
-                        <Text style={styles.vacinaValue}>R$60,00</Text>
+                        <Text style={styles.vacinaValue}>
+                        {Intl.NumberFormat('pt-BR', {
+                            style: 'currency',
+                            currency: 'BRL'
+                        }).format(vacina.valor)}
+                        </Text>
 
                         <TouchableOpacity
                             style={styles.detailButton}
@@ -60,4 +77,4 @@ export default function Vacinas() {
     )
 }
 
-//1:10
+// 1:15
