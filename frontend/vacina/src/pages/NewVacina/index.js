@@ -8,7 +8,7 @@ import api from '../../services/api'
 
 export default function NewVacina() {
 
-    const [nome, setNome] = useState('');
+    const [nomeVacina, setNome] = useState('');
     const [valor, setValor] = useState('');
     const [idadeRecomendada, setIdadeRecomendada] = useState('');
     const [numeroDoses, setNumeroDoeses] = useState('');
@@ -20,7 +20,7 @@ export default function NewVacina() {
         event.preventDefault();
 
         const data = ({
-            nome,
+            nomeVacina,
             valor,
             idadeRecomendada,
             numeroDoses
@@ -58,7 +58,7 @@ export default function NewVacina() {
                 <form onSubmit={handleNewVacina}>
                     <input
                         placeholder="Nome da vacina"
-                        value={nome}
+                        value={nomeVacina}
                         onChange={event => setNome(event.target.value)}
                     />
 

@@ -8,7 +8,7 @@ import api from '../../services/api'
 
 export default function Register() {
 
-    const [nome, setNome] = useState('');
+    const [nomePosto, setNome] = useState('');
     const [email, setEmail] = useState('');
     const [whatsapp, setWhatsapp] = useState('');
     const [logradouro, setLogradouro] = useState('');
@@ -20,7 +20,7 @@ export default function Register() {
         event.preventDefault();
 
         const data = ({
-            nome,
+            nomePosto,
             email,
             whatsapp,
             logradouro,
@@ -55,7 +55,7 @@ export default function Register() {
                 <form onSubmit={handleRegister}>
                     <input
                         placeholder="Nome do Posto de Saúde "
-                        value={nome}
+                        value={nomePosto}
                         onChange={event => setNome(event.target.value)}
                     />
 

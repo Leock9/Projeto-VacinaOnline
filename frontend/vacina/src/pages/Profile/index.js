@@ -57,7 +57,7 @@ export default function Profile() {
                 {vacinas.map(vacina => (
                     <li key={vacina.id}>
                         <strong>Nome</strong>
-                        <p>{vacina.nome}</p>
+                        <p>{vacina.nomeVacina}</p>
                         <strong>Valor por dose</strong>
                         <p>{Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(vacina.valor)}</p>
                         <strong>Idade Recomendada</strong>

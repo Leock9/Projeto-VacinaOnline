@@ -6,7 +6,7 @@ module.exports = {
         
         const posto = await connection('postosSaude') 
             .where('id', id)
-            .select('nome')
+            .select('nomePosto')
             .first();
 
         if(!posto) {

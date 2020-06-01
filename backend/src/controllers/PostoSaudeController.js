@@ -3,13 +3,13 @@ const crypto = require('crypto');
 
 module.exports = {
     async create(req, res) {
-        const { nome, email, whatsapp, logradouro, CEP} = req.body;
+        const { nomePosto, email, whatsapp, logradouro, CEP} = req.body;
 
         const id = crypto.randomBytes(4).toString('HEX');
     
         await connection('postosSaude').insert({
           id,
-          nome,
+          nomePosto,
           email,
           whatsapp,
           logradouro,

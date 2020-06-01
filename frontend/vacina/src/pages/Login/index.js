@@ -15,12 +15,10 @@ export default function Login() {
     event.preventDefault();
 
     try {
-
       const response = await api.post('session', {id})
-      console.log(response.data.nome)
-
+   
       localStorage.setItem('postoId', id);
-      localStorage.setItem('postoNome', response.data.nome);
+      localStorage.setItem('postoNome', response.data.nomePosto);
 
       history.push('/profile')
 

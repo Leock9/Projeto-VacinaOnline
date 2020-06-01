@@ -2,11 +2,11 @@ const connection = require('../database/connection');
 
 module.exports = {
     async create (req, res) {
-        const {nome, valor, idadeRecomendada, numeroDoses} = req.body;
+        const {nomeVacina, valor, idadeRecomendada, numeroDoses} = req.body;
         const postoSaude_id = req.headers.token;
 
         const [id] = await connection('vacinas').insert({
-            nome,
+            nomeVacina,
             valor,
             idadeRecomendada,
             numeroDoses,
@@ -27,7 +27,7 @@ module.exports = {
         .select
         ([
             'vacinas.*',
-            'postosSaude.nome',
+            'postosSaude.nomePosto',
             'postosSaude.email',
             'postosSaude.whatsapp',
             'postosSaude.logradouro',
