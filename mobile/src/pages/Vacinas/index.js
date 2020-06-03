@@ -13,8 +13,8 @@ export default function Vacinas() {
     const [vacinas, setVacinas] = useState([]);
     const [total, setTotal] = useState(0);
 
-    function navigationToDetail() {
-        navigation.navigate('Detail');
+    function navigationToDetail(vacina) {
+        navigation.navigate('Detail', { vacina });
     }
 
     async function loadVacinas() {
@@ -26,7 +26,7 @@ export default function Vacinas() {
 
     useEffect(() => {
         loadVacinas();
-    })
+    }, []);
 
     return (
         <View style={styles.container}>
@@ -50,10 +50,10 @@ export default function Vacinas() {
                 renderItem={({ item: vacina }) => (
                     <View style={styles.vacina}>
                         <Text style={styles.vacinaProperty}>Posto:</Text>
-                        <Text style={styles.vacinaValue}>{vacina.nome}</Text>
+                        <Text style={styles.vacinaValue}>{vacina.nomePosto}</Text>
 
-                        <Text style={styles.vacinaProperty}>Vacina Teste:</Text>
-                        <Text style={styles.vacinaValue}>Precia corrigir</Text>
+                        <Text style={styles.vacinaProperty}>Vacina:</Text>
+                        <Text style={styles.vacinaValue}>{vacina.nomeVacina}</Text>
 
                         <Text style={styles.vacinaProperty}>Valor por dose:</Text>
                         <Text style={styles.vacinaValue}>
@@ -65,7 +65,7 @@ export default function Vacinas() {
 
                         <TouchableOpacity
                             style={styles.detailButton}
-                            onPress={navigationToDetail}
+                            onPress={() => navigationToDetail(vacina)}
                         >
                             <Text style={styles.detailButtonText}>Ver mais detalhes</Text>
                             <Feather name="arrow-right" size={16} color='#E02041' />
@@ -76,5 +76,3 @@ export default function Vacinas() {
         </View>
     )
 }
-
-// 1:15

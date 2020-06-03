@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, TouchableOpacity, Text, Image, Linking } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, useRoute } from '@react-navigation/native';
 import { Feather } from '@expo/vector-icons';
 import * as MailComposer from 'expo-mail-composer';
 import styles from './styles';
@@ -8,7 +8,9 @@ import logo from '../../assets/logo2.png';
 
 export default function Detail() {
     const navigation = useNavigation();
-    const message = 'Ola gostaria de saber mais sobre a vacina "VacinaTeste"'
+    const route = useRoute();
+    const vacina = route.params.vacina;
+    const message = `Olá gostaria de saber mais ${vacina.nomeVacina}`
 
     function navigationToVacinas() {
         navigation.goBack();
@@ -16,14 +18,14 @@ export default function Detail() {
 
     function sendEmail() {
         MailComposer.composeAsync({
-            subject: 'Informacoes sobre: Vacina Teste',
-            recipients: ['leonardock9@gmail.com'],
+            subject: `Informacoes sobre: ${vacina.nomeVacina}` ,
+            recipients: [vacina.email],
             body: message
         })
     }
 
     function sendWhatsapp() {
-        Linking.openURL(`whatsapp://send?phone=551198520-9543&text=${message}`);
+        Linking.openURL(`whatsapp://send?phone=${whatsapp}&text=${message}`);
     }
 
     return (
@@ -37,14 +39,23 @@ export default function Detail() {
             </View>
 
             <View style={styles.vacina}>
-                <Text style={[styles.vacinaProperty, {marginTop : 0}]}>Posto:</Text>
-                <Text style={styles.vacinaValue}>Posto Teste</Text>
+                <Text style={[styles.vacinaProperty, { marginTop: 0 }]}>Posto:</Text>
+                <Text style={styles.vacinaValue}>{vacina.nomePosto}</Text>
 
-                <Text style={styles.vacinaProperty}>Vacina Teste:</Text>
-                <Text style={styles.vacinaValue}>Vacina Teste descricao</Text>
+                <Text style={styles.vacinaProperty}>Informações da vacina:</Text>
+                <Text style={styles.vacinaValue}>Número de doses: {vacina.numeroDoses}</Text>
+                <Text style={styles.vacinaValue}>Idade recomendada: {vacina.idadeRecomendada}</Text>
 
                 <Text style={styles.vacinaProperty}>Valor por dose:</Text>
-                <Text style={styles.vacinaValue}>R$60,00</Text>
+                        <Text style={styles.vacinaValue}>
+                        {Intl.NumberFormat('pt-BR', {
+                            style: 'currency',
+                            currency: 'BRL'
+                        }).format(vacina.valor)}
+                </Text>
+
+                <Text style={styles.vacinaProperty}>Endereço:</Text>
+                <Text style={styles.vacinaValue}>{vacina.logradouro} CEP: {vacina.CEP} </Text>
             </View>
 
             <View style={styles.contactBox}>
